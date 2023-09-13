@@ -10,6 +10,13 @@ Some git commands. [Git cheat sheet](https://www.atlassian.com/git/tutorials/atl
 
 `-depth=1` : Shallow clone with a history truncated to the specified number of commits.
 
+Fetch missing remote branches after shallow clone. [ref](https://stackoverflow.com/questions/23708231/git-shallow-clone-clone-depth-misses-remote-branches).
+
+```shell
+git remote set-branches origin '*'    # replace the * with a branchname for one
+git fetch -v --depth=1
+```
+
 ## Branch
 
 `git branch <branch-name> 3c5c49e`
