@@ -10,7 +10,7 @@ Some git commands. [Git cheat sheet](https://www.atlassian.com/git/tutorials/atl
 
 `-depth=1` : Shallow clone with a history truncated to the specified number of commits.
 
-Fetch missing remote branches after shallow clone. [ref](https://stackoverflow.com/questions/23708231/git-shallow-clone-clone-depth-misses-remote-branches).
+Fetch missing remote branches after shallow clone. [Ref](https://stackoverflow.com/questions/23708231/git-shallow-clone-clone-depth-misses-remote-branches).
 
 ```shell
 git remote set-branches origin '*'    # replace the * with a branchname for one
@@ -72,9 +72,38 @@ Tags aren’t automatically pushed when you push a branch or use the
 
 `git push origin :<branch_name>` : Delete a remote branch
 
+## Better Commit
+
+[Ref](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.greljkmo14y0).
+
+`<type>(<scope>): <subject>`
+
+`<body>`
+
+`<footer>`
+
+### Types
+
+- feat - add or modify features
+- fix - bug fix
+- doc - documentation
+- style - formatting, missing semi colons, …
+- refactor
+- perf - performance
+- test - when adding missing tests
+- chore - maintain, packages, and dependencies
+
+#### Fix
+
+`issue:`
+
+`cause:`
+
+`adjust:`
+
 ## Others
 
-Add color and branch name to zsh prompt. [ref](https://gist.github.com/reinvanoyen/05bcfe95ca9cb5041a4eafd29309ff29).
+Add color and branch name to zsh prompt. [Ref](https://gist.github.com/reinvanoyen/05bcfe95ca9cb5041a4eafd29309ff29).
 
 ```shell title='.zshrc'
 function parse_git_branch() {

@@ -7,7 +7,7 @@ tags: [redux, typescript, dispatch, middleware]
 
 TLDR: use `concat` instead of spread operator.
 
-[ref](https://redux-toolkit.js.org/usage/usage-with-typescript#correct-typings-for-the-dispatch-type). 
+[Ref](https://redux-toolkit.js.org/usage/usage-with-typescript#correct-typings-for-the-dispatch-type). 
 
 > As TypeScript often widens array types when combining arrays using the spread operator, we suggest using the .concat(...) and .prepend(...) methods of the MiddlewareArray returned by getDefaultMiddleware().
 
