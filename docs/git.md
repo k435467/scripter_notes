@@ -117,3 +117,7 @@ COLOR_GIT=$'%F{39}'
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR}%n ${COLOR_DIR}%2~ ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}$ '
 ```
+
+```shell title='git config'
+git config --global core.editor "code --wait"
+```
