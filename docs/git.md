@@ -118,6 +118,30 @@ setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR}%n ${COLOR_DIR}%2~ ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}$ '
 ```
 
-```shell title='git config'
-git config --global core.editor "code --wait"
+```conf title='.gitconfig'
+[user]
+	email = k435467@gmail.com
+	name = EthanGuo
+[push]
+	autoSetupRemote = true
+[core]
+	editor = code --wait
+[alias]
+	cm = commit
+	ps = push
+	pl = pull -p
+	co = checkout
+	br = branch
+	rs = reset
+	st = stash
+	sts = stash save -u
+	ref = reflog --relative-date
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
 ```
