@@ -13,8 +13,8 @@ sidebar_position: 9
 
 Stop an animation.
 
-> If the animation is done because `stop()` was called on it before it could finish (e.g. because it was interrupted by a gesture or another animation), then it will receive `{finished: false}`.
-
+> If the animation is done because `stop()` was called on it before it could finish (e.g. because it was interrupted by
+> a gesture or another animation), then it will receive `{finished: false}`.
 
 ```jsx
 const MyComponent = () => {
@@ -28,7 +28,7 @@ const MyComponent = () => {
     Animated.timing(height, {
       duration: 400,
       toValue: 38,
-      useNativeDriver:false,
+      useNativeDriver: false,
     }).start(() => {
       // highlight-start
       // Stop previous animation
@@ -47,7 +47,7 @@ const MyComponent = () => {
       // highlight-start
       closeMsgAnim.current = anim
       anim.start(({finished}) => {
-        if(finished) {
+        if (finished) {
           // highlight-end
           // Clean up
           dispatch({type: CLEAR})
@@ -55,10 +55,22 @@ const MyComponent = () => {
       })
     })
   }
-  
+
   // ...
 }
 ```
+
+## Env Variable
+
+For ECPay and TapPay env
+
+1. define two plist: `info.plist`, `info.prod.plist`
+2. Xcode > Build Settings > Packaging > Use different plist file on debug and release
+
+## iOS Simulator Debug
+
+1. Use an iOS simulator to open a website in Safari
+2. Use Safari(Desktop) to open the **Development** menu. Click the simulator and the website to open debugger
 
 ## Release
 
@@ -70,7 +82,8 @@ Three options:
 
 ### Microsoft CodePush
 
-1. Run the script `react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'`
+1. Run the
+   script `react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'`
 2. Run the script `appcenter CodePush release-react -a <A> -t <T> -d Production`
 3. Go to App Center > The app > Distribute > CodePush
 4. Select and edit the bundle. Switch on the `Enable`, `Required Update` then click done
@@ -89,7 +102,8 @@ Three options:
 1. Edit `app/build.gradle` and make sure the `default.versionName` matches. `defaultConfig.versionCode` + 1
 2. Open Android Studio and click the elephant icon to **sync project with gradle files** in the top right corner
 3. Click Android Studio **Build** menu and click **Generate Signed Bundle/APK**
-4. Go to Google **Play Store Console**. 左側選單選擇'正式版' > 建立新版本 > 上傳檔案 `android/app/release/app-release.apk` > 送審
+4. Go to Google **Play Store Console**. 左側選單選擇'正式版' > 建立新版本 >
+   上傳檔案 `android/app/release/app-release.apk` > 送審
 
 ## MISC.
 
