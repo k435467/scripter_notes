@@ -60,6 +60,37 @@ const MyComponent = () => {
 }
 ```
 
+## Release
+
+Three options:
+
+1. Microsoft CodePush
+2. Apple App Store
+3. Google Play Store
+
+### Microsoft CodePush
+
+1. Run the script `react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'`
+2. Run the script `appcenter CodePush release-react -a <A> -t <T> -d Production`
+3. Go to App Center > The app > Distribute > CodePush
+4. Select and edit the bundle. Switch on the `Enable`, `Required Update` then click done
+
+### Apple App Store
+
+1. Select project > change build version
+2. Open the Xcode **Product** menu > **Archive**
+3. Open the Xcode **Window** menu > **Organizer**. Find the archive and **Distribute App**
+4. Go to App Store Connect > Test Flight. Download the app on mobile phone
+5. Click **+ icon** in top left corner to create a new version. Click **Add to review** after edit the version info.
+6. Go to **App Review** on the left side menu. Find the version and click **Submit**
+
+### Google Play Store
+
+1. Edit `app/build.gradle` and make sure the `default.versionName` matches. `defaultConfig.versionCode` + 1
+2. Open Android Studio and click the elephant icon to **sync project with gradle files** in the top right corner
+3. Click Android Studio **Build** menu and click **Generate Signed Bundle/APK**
+4. Go to Google **Play Store Console**. 左側選單選擇'正式版' > 建立新版本 > 上傳檔案 `android/app/release/app-release.apk` > 送審
+
 ## MISC.
 
 ### `Intl` Error in Android 13
