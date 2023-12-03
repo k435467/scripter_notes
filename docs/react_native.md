@@ -59,3 +59,17 @@ const MyComponent = () => {
   // ...
 }
 ```
+
+## MISC.
+
+### `Intl` Error in Android 13
+
+Use native `Intl` in React Native would cause an error on Android 13.
+Therefore, use the [**intl package**](https://www.npmjs.com/package/intl) instead.
+
+```ts
+import 'intl'
+import 'intl/locale-data/jsonp/en'
+// Use as the same as the native `intl` below
+//...
+```
