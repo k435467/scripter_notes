@@ -2,7 +2,7 @@
 slug: vercel-postgresql-data-unreasonably-high
 title: Vercel PostgreSQL Data Unreasonably High
 authors: ethan
-tags: [Vercel, PostgreSQL, SQL]
+tags: [Vercel, PostgreSQL, sql.mdx]
 ---
 
 Because it markups other services and do some extra work.
