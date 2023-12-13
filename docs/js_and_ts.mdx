@@ -1,0 +1,139 @@
+---
+sidebar_position: 9
+---
+
+# JS/TS
+
+## Redux Correct Typings for Dispatch
+
+TLDR: use `concat` instead of spread operator.
+
+[Ref](https://redux-toolkit.js.org/usage/usage-with-typescript#correct-typings-for-the-dispatch-type).
+
+> As TypeScript often widens array types when combining arrays using the spread operator, we suggest using the .concat(...) and .prepend(...) methods of the MiddlewareArray returned by getDefaultMiddleware().
+
+```ts {11-23}
+import { configureStore } from '@reduxjs/toolkit'
+import additionalMiddleware from 'additional-middleware'
+import logger from 'redux-logger'
+// @ts-ignore
+import untypedMiddleware from 'untyped-middleware'
+import rootReducer from './rootReducer'
+
+export type RootState = ReturnType<typeof rootReducer>
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware()
+      .prepend(
+        // correctly typed middlewares can just be used
+        additionalMiddleware,
+        // you can also type middlewares manually
+        untypedMiddleware as Middleware<
+          (action: Action<'specialAction'>) => number,
+          RootState
+        >
+      )
+      // prepend and concat calls can be chained
+      .concat(logger),
+})
+
+export type AppDispatch = typeof store.dispatch
+
+export default store
+```
+
+## Date
+
+```js
+const dateFromString = new Date('2023-10-10T22:47:19+08:00');
+
+const date = new Date();
+
+console.log(date.toISOString())
+// 2023-10-10T14:47:19.156Z
+
+console.log(new Intl.DateTimeFormat('zh-TW', {
+    hourCycle: 'h23',
+    timeZone: 'Asia/Taipei',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+}).format(date));
+// 2023/10/10 22:47:19
+
+console.log(new Intl.DateTimeFormat('zh-TW', {
+    hourCycle: 'h23',
+    timeZone: 'Asia/Taipei',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    // highlight-next-line
+    weekday: 'long',
+}).format(date));
+// 2023年10月10日 星期二 22:48:31
+
+// highlight-next-line
+console.log(new Intl.DateTimeFormat('en-US', {
+    hourCycle: 'h23',
+    timeZone: 'Asia/Taipei',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    // highlight-next-line
+    weekday: 'short',
+}).format(date));
+// Tue, 10/10/2023, 22:51:33
+```
+
+## TS Union Type as Key
+
+```ts
+type UnionType = 'foo' | 'bar'
+
+type ExampleType = {
+  [key in UnionType]: string
+}
+```
+[Union type as key in interface?](https://stackoverflow.com/questions/55023610/union-type-as-key-in-interface)
+
+## Currency
+
+```ts
+/**
+ * @example
+ * currencyFormat(89900) // returns '$89,900'
+ */
+const currencyFormat = (value: number, currency: string = 'USD') => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+    minimumFractionDigits: 0,
+  }).format(value)
+}
+```
+
+[Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
+
+:::danger
+
+Use native `Intl` in React Native would cause an error on Android 13.
+Therefore, use the [**intl package**](https://www.npmjs.com/package/intl) instead.
+
+```ts
+import 'intl'
+import 'intl/locale-data/jsonp/en'
+// Use as the same as the native `intl` below
+//...
+```
+
+:::
