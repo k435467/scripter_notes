@@ -2,6 +2,9 @@
 sidebar_position: 1
 ---
 
+import StyleImage from "../src/components/StyleImage";
+const imageMaxWidth = '400px'
+
 # Git
 
 Some git commands. [Git cheat sheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet).
@@ -66,7 +69,15 @@ The hash changed because the parent has changed.
 Tags aren’t automatically pushed when you push a branch or use the
 `--all` flag. The `--tags` flag sends all of your local tags to the remote repo.
 
-`git tag <tagname>`
+`git tag` : List of tags
+
+`git tag <tag_name>` : Add a tag
+
+`git tag -d <tag_name>` : Remove a tag
+
+`git push origin <tag_name>` : Push a tag to origin
+
+`git push origin --delete <tag_name>` : Remove a tag from origin
 
 ## Push
 
@@ -100,6 +111,21 @@ Tags aren’t automatically pushed when you push a branch or use the
 `cause:`
 
 `adjust:`
+
+## Tilde and Caret
+
+<StyleImage src="/img/git_tilde_and_caret.webp" style={{maxWidth: imageMaxWidth}}/>
+
+`git checkout HEAD~~` > `b98ced17`
+
+`~~` is equal to `^^` but differ in meaning when they are used with numbers:
+
+`git checkout HEAD~2` > `b98ced17`
+
+`git checkout HEAD^2` > `9849a2f3`
+
+- `~2` means **up two levels in the hierarchy**, via the first parent if a commit has more than one parent
+- `^2` means **the second parent** where a commit has more than one parent (i.e. because it's a merge)
 
 ## Others
 
