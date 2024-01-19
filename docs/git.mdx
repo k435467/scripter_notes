@@ -50,6 +50,16 @@ The hash changed because the parent has changed.
 
 `git rebase --onto <newbase> <oldbase>`
 
+### Prepend messages
+
+1. [StackOverflow: execute command to all commit](https://stackoverflow.com/a/69551810)
+2. [StackOverflow: add line break](https://stackoverflow.com/a/69551810)
+
+```bash
+$ git rebase -i --exec 'git commit --amend -m "$(git show -s --format=%s)" -m "Issue: DD-55"' dev
+git rebase -i --exec 'git commit --amend -m "$(git show -s --format=%s)" -m "Issue: GREEN-44"' dev
+```
+
 ## Reflog
 
 `git reflog` or `git reflog show HEAD`
