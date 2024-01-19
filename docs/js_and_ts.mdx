@@ -137,3 +137,64 @@ import 'intl/locale-data/jsonp/en'
 ```
 
 :::
+
+
+## Browser Compatibility Issues
+
+The problem with the old versioned iOS Safari syntax error. Solution: specify the browser list: [@babel/preset-env · Babel (babeljs.io)](https://babeljs.io/docs/babel-preset-env)
+
+## String Literal To Make Object Literal
+
+```tsx
+interface NavItemBase {
+  title: string
+}
+
+export interface NavItem extends NavItemBase {
+  type: 'NavItem'
+  path: string
+}
+
+export interface NavItemDropdown extends NavItemBase {
+  type: 'NavItemDropdown'
+  items: (NavItem | NavItemDropdown)[]
+}
+export type NavbarContent = (NavItem | NavItemDropdown)[]
+
+const test: NavbarContent = [
+  {
+    type: 'NavItem',
+    path: '123',
+    title: '123',
+    // invalid
+    items: [],
+  },
+  {
+    type: 'NavItemDropdown',
+    title: '123',
+    items: [],
+    // invalid
+    path: '123',
+  },
+  {
+    type: 'NavItemDropdown',
+    title: '123',
+    items: [
+      {
+        type: 'NavItem',
+        path: '123',
+        title: '123',
+        // invalid
+        items: [],
+      },
+      {
+        type: 'NavItemDropdown',
+        items: [],
+        title: '123',
+        // invalid
+        path: '123',
+      },
+    ],
+  },
+]
+```
