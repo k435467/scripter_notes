@@ -105,6 +105,47 @@ Three options:
 4. Go to Google **Play Store Console**. 左側選單選擇'正式版' > 建立新版本 >
    上傳檔案 `android/app/release/app-release.apk` > 送審
 
+## Device Info
+
+[GitHub react-native-device-info](https://github.com/react-native-device-info/react-native-device-info#usage)
+
+## Open Store
+
+```tsx
+Linking.openURL(
+  Platform.OS === 'ios'
+    ? 'itms-apps://apps.apple.com/id/app/<name>/<id>'
+    : 'market://details?id=<id>',
+)
+```
+
+## Icons
+
+[GitHub react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
+
+React native vector icon android not showing correctly. Need to follow the install instructions and modify the `build.gradle`
+
+```gradle
+// React Native vector icons
+project.ext.vectoricons = [
+    iconFontNames: [
+        'AntDesign.ttf',
+        'FontAwesome.ttf',
+        'FontAwesome5_Brands.ttf',
+        'FontAwesome5_Regular.ttf',
+        'FontAwesome5_Solid.ttf',
+        'Ionicons.ttf'
+    ] // Name of the font files you want to copy
+]
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+```
+
+## Image
+
+## Unexpected zoom-in
+
+[Github resizeMode behaviour is inconsistent](https://github.com/DylanVann/react-native-fast-image/issues/922)
+
 ## MISC.
 
 ### `Intl` Error in Android 13
