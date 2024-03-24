@@ -113,7 +113,7 @@ namespace GreenBox.Persistence.Data.EfRepository
 
 使用 ORM 直接執行 sql commnad 的時候，db context 裡面的 states 並不會被更改，在記憶體內仍然被視為 **Unchanged** ，如果這時我們又新增一個 duplicate PK 的物件，就會產生以下error：
 
-> The instance of entity type 'ErpInventoryMain' cannot be tracked because another instance with the key value '{InventoryId: InventoryMain-0336d32c-6da8-4c22-a325-15e73a954a86}' is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached.
+> The instance of entity type 'ErpInventoryMain' cannot be tracked because another instance with the key value '\{InventoryId: InventoryMain-0336d32c-6da8-4c22-a325-15e73a954a86}' is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached.
 
 ```cs
 try{
