@@ -14,9 +14,65 @@ Add uppercase N prefix.
 select * from myTable where category = N'牛奶'
 ```
 
+## Money
+
+SQL Server. Postfix a `m` for money instead of int or double, e.g. default 500.0m
+
 ## Vercel PostgreSQL Data Unreasonably High
 
 Because it markups other services and do some extra work.
 
 - [Postgres Written Data Limit always unreasonably high](https://github.com/orgs/vercel/discussions/4558)
 - [Vercel Markup](https://service-markup.vercel.app/)
+
+## Self Join
+
+```sql
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+```
+
+`<>` is the inequality operator. A alternative is `!=`.
+
+## Transaction
+
+```sql
+begin transaction
+begin try
+    update Products
+    set Price = 100
+    where Id = 111
+
+    -- Queries ...
+
+    commit transaction
+end try
+begin catch
+    rollback transaction
+end catch
+```
+
+## Commands
+
+### EXISTS
+
+Tests for the existence of any record in a subquery.
+
+```sql
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName
+              FROM Products
+              WHERE SupplierId = Suppliers.supplierId
+                AND Price < 20);
+```
+
+### CONVERT
+
+```sql
+-- CONVERT(data_type(length), expression, style)
+CONVERT(DATE, DATEADD(HOUR, 8, <COLUMN>)) -- Convert to Taipei time
+```
