@@ -14,48 +14,17 @@ When working with Prisma we have to add a database name behind the URL.
 
 Do not use mongodb in client side because it is nodejs only.
 
-```text
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/client-side-encryption/state_machine.js
-Module not found: Can't resolve 'fs/promises'
+>./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/client-side-encryption/state_machine.js Module not found: Can't resolve 'fs/promises'
 
-https://nextjs.org/docs/messages/module-not-found
+## Rename Field
 
-Import trace for requested module:
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/client-side-encryption/client_encryption.js
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/index.js
-./src/app/site-settings/products/create/page.tsx
+[Red](https://stackoverflow.com/questions/75278317/mongodb-rename-fields-in-aggregation-pipeline). Rename a field that no need to specify all fields.
 
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/client-side-encryption/state_machine.js
-Module not found: Can't resolve 'net'
-
-https://nextjs.org/docs/messages/module-not-found
-
-Import trace for requested module:
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/client-side-encryption/client_encryption.js
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/index.js
-./src/app/site-settings/products/create/page.tsx
-
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/client-side-encryption/state_machine.js
-Module not found: Can't resolve 'tls'
-
-https://nextjs.org/docs/messages/module-not-found
-
-Import trace for requested module:
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/client-side-encryption/client_encryption.js
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/index.js
-./src/app/site-settings/products/create/page.tsx
-
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/cmap/auth/gssapi.js
-Module not found: Can't resolve 'dns'
-
-https://nextjs.org/docs/messages/module-not-found
-
-Import trace for requested module:
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/index.js
-./src/app/site-settings/products/create/page.tsx
-
-./node_modules/.pnpm/mongodb@6.3.0/node_modules/mongodb/lib/cmap/auth/mongodb_oidc/aws_service_workflow.js
-Module not found: Can't resolve 'fs'
-
-https://nextjs.org/docs/messages/module-not-found
+```jsx
+{
+  $set: {
+    sale: '$sales'
+    sales: '$$REMOVE'
+  }
+}
 ```
