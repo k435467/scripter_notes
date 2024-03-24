@@ -23,3 +23,13 @@ Some CSS tricks. Demos use tailwindCSS.
   </div>
 </div>
 ```
+
+## Emotion
+
+[Ref](https://stackoverflow.com/a/72421565/20943696). Emotion style got error:
+
+> You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop).
+
+solved by adding at the top of the file: `/** @jsxImportSource @emotion/react */`
+
+[emotion/react](https://emotion.sh/docs/@emotion/react)
