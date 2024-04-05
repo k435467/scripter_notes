@@ -4,6 +4,18 @@ sidebar_position: 15
 
 # React
 
+## NextJS
+
+### Props must be serializable
+
+> Props must be serializable for components in the "use client" entry file.
+
+[Github Issue - Props must be serializable for components in "use client" file #46795](https://github.com/vercel/next.js/discussions/46795)
+
+Answer:
+
+> Since it's a boundary, you can potentially use it in a server component. However it's not allowed to have props that can't be serialized in that case. If you import child.tsx and render it inside a server component, there's no way to pass a function as the prop.
+
 ## dnd-kit
 
 ```typescript
