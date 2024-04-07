@@ -159,3 +159,9 @@ import 'intl/locale-data/jsonp/en'
 // Use as the same as the native `intl` below
 //...
 ```
+
+### Android Emulator's States Are Not Saved
+
+[Reddit - Emulator's States Are Not Saved](https://www.reddit.com/r/AndroidStudio/comments/yohg3k/emulators_states_are_not_saved_after_i_signed_in/)
+
+Solution: Change Boot option from "Quick boot" to "Cold boot.
