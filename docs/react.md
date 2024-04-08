@@ -261,3 +261,15 @@ const sensors = useSensors(
   })
 )
 ```
+
+### Not Working On Mobile
+
+[Github Issue - Sortable not working correctly when using touchscreens #834](https://github.com/clauderic/dnd-kit/issues/834)
+
+Solution:
+
+Tailwind CSS `touch-none` on draggable elements.
+
+> Specify the `touch-action` CSS property for all of your draggable elements.
+
+> If your draggable item is part of a scrollable list, we recommend you use a drag handle and set `touch-action` to `none` only for the drag handle, so that the contents of the list can still be scrolled, but that initiating a drag from the drag handle does not scroll the page.
